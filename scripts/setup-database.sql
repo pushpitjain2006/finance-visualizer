@@ -1,0 +1,60 @@
+-- This is a MongoDB application, so no SQL setup is needed.
+-- However, here are the equivalent MongoDB operations that would be performed:
+
+-- Create database (automatically created when first document is inserted)
+-- use personal_finance_db
+
+-- Create collection with validation (handled by Mongoose schema)
+-- db.createCollection("transactions", {
+--   validator: {
+--     $jsonSchema: {
+--       bsonType: "object",
+--       required: ["amount", "date", "description"],
+--       properties: {
+--         amount: {
+--           bsonType: "number",
+--           description: "must be a number and is required"
+--         },
+--         date: {
+--           bsonType: "date",
+--           description: "must be a date and is required"
+--         },
+--         description: {
+--           bsonType: "string",
+--           minimum: 1,
+--           maximum: 500,
+--           description: "must be a string between 1-500 characters and is required"
+--         }
+--       }
+--     }
+--   }
+-- })
+
+-- Create indexes for better performance
+-- db.transactions.createIndex({ "date": -1 })
+-- db.transactions.createIndex({ "createdAt": -1 })
+
+-- Sample data insertion (optional)
+-- db.transactions.insertMany([
+--   {
+--     amount: 50.00,
+--     date: new Date("2024-01-15"),
+--     description: "Grocery shopping at Whole Foods",
+--     createdAt: new Date(),
+--     updatedAt: new Date()
+--   },
+--   {
+--     amount: 25.99,
+--     date: new Date("2024-01-14"),
+--     description: "Coffee and pastry",
+--     createdAt: new Date(),
+--     updatedAt: new Date()
+--   },
+--   {
+--     amount: 120.00,
+--     date: new Date("2024-01-10"),
+--     description: "Monthly gym membership",
+--     createdAt: new Date(),
+--     updatedAt: new Date()
+--   }
+-- ])
